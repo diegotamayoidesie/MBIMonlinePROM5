@@ -24,60 +24,84 @@ SELECT * from countries;
 /* 6
 Ciudad y estado de las localidades
 */
-
+SELECT CITY, STATE_PROVINCE
+from locations;
 /* 7
 Nombre, apellido, salario de los empleados
 */
+SELECT first_name, last_name, salary
+FROM employees;
 
 /* 8
 Número de departamento, nombre, y manager_id de los departamentos
 */
-
+SELECT department_id, department_name, manager_id
+from departments;
 /* 9
 Número y nombre de departamento, además, el código del empleado jefe,
 de la localidad 1700.
 */
-
+SELECT department_id, department_name, manager_id
+from departments
+where location_id = 1700;
 /* 10
 Nombre y número de departamento de los empleados.
 */
-
+SELECT first_name, department_id
+from employees;
 /* 11
 Nombre y número de departamento de los empleados
 ordenados por número de departamento ascendentemente.
 */
-
+SELECT first_name, department_id
+from employees
+order by department_id asc;
 /* 12
 Listar los distintos números de departamento en el que trabajan los empleados.
 */
-
+SELECT department_id
+from departments;
 /* 13
 Listar los distintos números de departamento en el que trabajan los empleados
 ordenados descendentemente.
 */
-
+SELECT department_id
+from departments
+order by department_id desc;
 /* 14
 Nombre, apellido y salario ordenados por id de empleado descendentemente
 */
-
+SELECT first_name, last_name, salary
+FROM employees
+order by employee_id desc;
 /* 15
 Nombre, apellido y salario ordenado por apellido ascendentemente y salario descendentemente
 */
-
+SELECT first_name, last_name, salary
+FROM employees
+order by last_name asc, salary desc;
 /* 16
 códigos de los distintos trabajos que existen en el departamento 30
 */
-
+SELECT job_id
+from employees
+where department_id=30;
 /* 17
 códigos de los distintos trabajos que existen en el departamento 60
 ordenados descendentemente
 */
-
+SELECT job_id
+from employees
+where department_id=60
+order by job_id desc;
 /* 18
 Nombre, apellido y correo de los empleados del departamento 30
 cuyo salario es menor a 3000
 */
-
+SELECT first_name, last_name, email
+FROM employees
+where department_id=30 and salary<3000
+order by last_name asc, salary desc;
 /* 19
 Nombre, apellido y correo de los empleados del departamento 30
 cuyo salario es menor a 3000
