@@ -107,13 +107,19 @@ Nombre, apellido y correo de los empleados del departamento 30
 cuyo salario es menor a 3000
 o que sean del departamento 90
 */
-
+SELECT first_name, last_name, email
+FROM employees
+where department_id=30 and salary<3000 or department_id=90
+order by last_name asc, salary desc;
 /* 20
 nombre, apellido y número de departamento de los empleados
 que no tengan comisión. Ordenados por número de departamento 
 del mayor a menor y por apellido descendentemente.
 */
-
+SELECT first_name, last_name, department_id
+FROM employees
+where commission_pct IS null
+order by department_id desc, last_name desc;
 /* 21
 nombre, apellido, número de departamento y salario de los empleados
 que no tengan comisión o su salario sea menor a 6000 
@@ -121,7 +127,10 @@ y que se cumpla que son del departamento 60 o del 90
 ordenados por número de departamento descendentemente
 y por salario ascendentemente.
 */
-
+SELECT first_name, last_name, department_id, salary, 
+FROM employees
+where commission_pct IS null or salary<6000 and department_id in (30,90) 
+order by department_id desc, salary asc;
 /* 22
 Número de empleado, nombre y apellido de los empleados
 desde el apellido que empieza por L hasta los que su apellido
