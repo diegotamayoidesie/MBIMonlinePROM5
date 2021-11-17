@@ -136,44 +136,71 @@ Número de empleado, nombre y apellido de los empleados
 desde el apellido que empieza por L hasta los que su apellido
 empieza por la R, incluidos.
 */
-
+SELECT employee_id, first_name, last_name
+FROM employees
+where last_name >= 'L%' and last_name < 'S%';
 /* 23
 Lista de apellidos que su segunda letra sea una 'a'
 */
-
+SELECT last_name
+FROM employees
+where last_name like '_a%';
 /* 24
 Lista de apellidos de empleados donde el apellido empieza por alguna vocal
 y que su salario es menor a 3000 o mayor a 9000
 y debe cumplirse que su departamento es el 30, 60 o 90.
 */
-
+SELECT last_name
+FROM employees
+where (last_name like 'a%' or
+    last_name like 'e%' or
+    last_name like 'i%' or
+    last_name like 'o%' or
+    last_name like 'u%') and
+    salary between 3000 and 9000;
 /* 25
 Nombre, apellido y el salario de los empleados
 pero como salario una etiqueta que indique 
 'BAJO' si es menor a 4280, 'ALTO' si es mayor a 15230
 y 'MEDIO' si está entre medias
 */
-
+SELECT first_name, last_name, salary,
+    CASE 
+        when salary < 4280 then  'BAJO'
+        when salary > 15230 then  'ALTO'
+        ELSE 'MEDIO'
+    END Salary
+FROM employees;   
 /* 26
 Listar los correos concatenados con el texto '@company.com'
 */
-
+select email
+    CONCAT(email,'@company.com') correo
+from employees;
 /* 27
 Lista de nombres de las ciudades que su país es 'US'
 */
-
+select email,
+    CONCAT(email,'@company.com') correo
+from employees;
 /* 28
 Lista de nombre de las ciudades que su país no es Estados Unidos
 */
-
+SELECT CITY
+FROM locations
+WHERE country_id != 'US';
 /* 29
 Número y nombre de los departamentos que tienen un jefe.
 */
-
+SELECT department_id, department_name
+FROM departments
+WHERE manager_id is not null;
 /* 30
 Número y nombre de los departamentos que no tienen jefe.
 */
-
+SELECT department_id, department_name
+FROM departments
+WHERE manager_id is null;
 /* 31
 Nombre de las columnas de la tabla de empleados 'Employees'
 que no tienen un guión bajo en el nombre.
