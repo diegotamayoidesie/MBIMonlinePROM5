@@ -205,6 +205,12 @@ WHERE manager_id is null;
 Nombre de las columnas de la tabla de empleados 'Employees'
 que no tienen un guión bajo en el nombre.
 */
-
+select
+    table_name,
+    column_name
+from all_tab_columns
+where 
+   table_name = 'EMPLOYEES' and
+   column_name NOT LIKE '%@__%' escape '@';
 --
 ------------------------------------------------------------------------------------------------
